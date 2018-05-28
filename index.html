@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>modal</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="mobileOptimized" content="width">
+    <meta name="handheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta NAME="robots" CONTENT="noindex, nofollow">
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+    <script src="./dist/pomelo-modal.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./dist/pomelo-modal.min.css">
+    <link rel="stylesheet" href="https://pomelo-chuan.github.io/Positive-Button/styles/positive-button.css">
+</head>
+
+<body>
+    <div id="button-list">
+        <button id="error" class="positive-btn positive-btn-grey">error</button>
+        <button id="primary" class="positive-btn positive-btn-grey">primary</button>
+        <button id="success" class="positive-btn positive-btn-grey">success</button>
+        <button id="warning" class="positive-btn positive-btn-grey">warning</button>
+        <button id="white" class="positive-btn positive-btn-grey">white</button>
+        <button id="blue" class="positive-btn positive-btn-grey">blue</button>
+    </div>
+    <div class="pomelo-modal-container">
+        <div class="pomelo-modal">
+            <div class="pomelo-modal-title">Title</div>
+            <div class="pomelo-modal-content">
+            </div>
+            <div class="pomelo-modal-footer">
+                <button class="pomelo-modal-cancel">取消</button>
+                <button class="pomelo-modal-confirm">确定</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var modal = new PomeloModal();
+    $('#button-list').on('click', function (e) {
+        const type = e.target.id;
+        console.log(type);
+    });
+</script>
+
+</html>
