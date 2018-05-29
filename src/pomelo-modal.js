@@ -1,23 +1,51 @@
 class PomeloModal {
     constructor() {
-
+        this.MODAL_HTML = `
+        <div class="pomelo-modal-container">
+            <div class="pomelo-modal">
+                <div class="pomelo-modal-title">:title</div>
+                <div class="pomelo-modal-content">
+                    :text
+                </div>
+                <div class="pomelo-modal-footer">
+                    <button class="pomelo-modal-cancel">:cancelText</button>
+                    <button class="pomelo-modal-confirm">:confirmText</button>
+                </div>
+            </div>
+        </div>
+        `;
     }
 
-    show(content) {
+    show(content, ok, cancel) {
         this.checkEnvironment();
         const {
             title,
-            children,
+            text,
             cancelText,
+            confirmText,
         } = content;
+
+        const modal_html = this.MODAL_HTML
+            .replace(':title', title)
+            .replace(':text', text)
+            .replace(':cancelText', cancelText)
+            .replace(':confirmText', confirmText);
+
+        $('body').append(modal_html);
+        $('.pomelo-modal-confirm').on('click', () => ok && ok());
+        $('.pomelo-modal-cancel').on('click', () => cancel && cancel());
+
     }
 
     hide() {
-
+        $('.pomelo-modal-container').addClass('pomelo-modal-hide-fade-out');
+        $('.pomelo-modal').addClass('pomelo-modal-hide-flow-down');
+        setTimeout(() => {
+            $('.pomelo-modal-container').remove();
+        }, 600);
     }
 
-    appendDom() {
-
+    appendDom(html) {
     }
 
     removeDom() {
