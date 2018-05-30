@@ -38,18 +38,17 @@ class PomeloModal {
     }
 
     hide() {
+        this.timer;
+        if (this.timer) {
+            return;
+        }
         $('.pomelo-modal-container').addClass('pomelo-modal-hide-fade-out');
         $('.pomelo-modal').addClass('pomelo-modal-hide-flow-down');
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
             $('.pomelo-modal-container').remove();
-        }, 600);
-    }
-
-    appendDom(html) {
-    }
-
-    removeDom() {
-
+            clearTimeout(this.timer);
+            this.timer = null;
+        }, 500);
     }
 
     checkEnvironment() {
@@ -58,4 +57,3 @@ class PomeloModal {
         }
     }
 }
-
